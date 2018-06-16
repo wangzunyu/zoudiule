@@ -59,7 +59,6 @@ export default {
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
   .recommend-title
-    margin-top .2rem
     line-height .8rem
     background #ccc
     text-indent .2rem
