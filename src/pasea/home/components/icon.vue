@@ -1,6 +1,6 @@
 <template>
   <div class="icons">
-    <swiper>
+    <swiper :options="swiperOption">
       <swiper-slide v-for="(page, index) of pages" :key="index">
         <div v-for='item of page' :key="item.id" class="icon">
           <div class="icon-img">
@@ -9,7 +9,6 @@
           <p class="icon-text">{{item.text}}</p>
         </div>
       </swiper-slide>
-      <div class="swiper-pagination"  slot="pagination"></div>
     </swiper>
   </div>
 </template>
@@ -19,6 +18,9 @@ export default {
   name: 'HomeIcons',
   data () {
     return {
+      swiperOption: {
+        loop: false
+      },
       iconList: [
         {
           id: '00001',
@@ -70,11 +72,11 @@ export default {
   },
   computed: {
     pages () {
-      const pages = []
+      const pages = [] // 定义一个全局空数组
       this.iconList.forEach((item, index) => {
-        const page = Math.floor(index / 8)
-        if (!pages[page]) {
-          pages[page] = []
+        const page = Math.floor(index / 8) // 定义一个全局变量 向下取整
+        if (!pages[page]) { // 判断这个 page 不存在
+          pages[page] = [] // 就等于一个空
         }
         pages[page].push(item)
       })
@@ -89,6 +91,8 @@ export default {
   .icons >>> .swiper-container
     height 0
     padding-bottom 50%
+  .icons
+    margin-top .1rem
     .icon
       position relative
       float left
