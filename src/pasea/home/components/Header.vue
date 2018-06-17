@@ -7,10 +7,12 @@
       <span class="iconfont">&#xe632;</span>
         别瞎走/丢了咋整
     </div>
-    <div class="header-rit">
-        {{this.city}}
-      <span class="iconfont arrow-icon">&#xe64a;</span>
-    </div>
+    <router-link to="/city">
+      <div class="header-rit">
+          {{this.city}}
+        <span class="iconfont arrow-icon">&#xe64a;</span>
+      </div>
+    </router-link>
   </div>
 </template>
 
@@ -49,6 +51,7 @@ export default {
       width: 1.24rem
       float: right
       text-align center //文本居中
+      color #fff
       .arrow-icon
         margin-left -.02rem
         font-size .2rem
