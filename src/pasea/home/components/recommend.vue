@@ -4,11 +4,11 @@
       热销推荐
     </div>
     <ul>
-      <li class="item" v-for="item of recommendList" :key="item.id">
+      <li class="item" v-for="item of list" :key="item.id">
           <img :src="item.imgUrl" class="item-img">
         <div class="item-info">
           <p class="item-title">{{item.title}}</p>
-          <p class="item-text">{{item.text}}</p>
+          <p class="item-text">{{item.desc}}</p>
           <button class="item-button">查看详情</button>
         </div>
       </li>
@@ -19,6 +19,9 @@
 <script type="text/ecmascript-6">
 export default {
   name: 'HomeRecommend',
+  props: {
+    list: Array
+  },
   data () {
     return {
       recommendList: [{

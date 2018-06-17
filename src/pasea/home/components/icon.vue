@@ -6,7 +6,7 @@
           <div class="icon-img">
             <img class="icon-imgcontent" :src="item.imgUrl">
           </div>
-          <p class="icon-text">{{item.text}}</p>
+          <p class="icon-text">{{item.desc}}</p>
         </div>
       </swiper-slide>
     </swiper>
@@ -16,10 +16,13 @@
 <script type="text/ecmascript-6">
 export default {
   name: 'HomeIcons',
+  props: {
+    list: Array
+  },
   data () {
     return {
       swiperOption: {
-        loop: false
+        // autoplay: false
       },
       iconList: [
         {
@@ -73,7 +76,7 @@ export default {
   computed: {
     pages () {
       const pages = [] // 定义一个全局空数组
-      this.iconList.forEach((item, index) => {
+      this.list.forEach((item, index) => {
         const page = Math.floor(index / 8) // 定义一个全局变量 向下取整
         if (!pages[page]) { // 判断这个 page 不存在
           pages[page] = [] // 就等于一个空

@@ -4,13 +4,13 @@
       周末去哪浪
     </div>
     <ul>
-      <li class="item" v-for="item of recommendList" :key="item.id">
+      <li class="item" v-for="item of list" :key="item.id">
         <div class="item-img-wrapper">
           <img :src="item.imgUrl" class="item-img">
         </div>
         <div class="item-info">
           <p class="item-title">{{item.title}}</p>
-          <p class="item-text">{{item.text}}</p>
+          <p class="item-text">{{item.desc}}</p>
         </div>
       </li>
     </ul>
@@ -20,6 +20,9 @@
 <script type="text/ecmascript-6">
 export default {
   name: 'HomeRecommend',
+  props: {
+    list: Array
+  },
   data () {
     return {
       recommendList: [{
@@ -65,7 +68,7 @@ export default {
   .item-img-wrapper
     overflow hidden
     height 0
-    padding-bottom 33.9%
+    padding-bottom 37.08%
     border-bottom solid #ccc .01rem
     .item-img
       width 100%
