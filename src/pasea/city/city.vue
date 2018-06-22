@@ -2,8 +2,8 @@
   <div>
     <city-header></city-header>
     <city-sech></city-sech>
-    <city-list :cities="cities" :hot="hotCities"></city-list>
-    <city-alphabet :cities="cities"></city-alphabet>
+    <city-list :letter="letter" :cities="cities" :hot="hotCities"></city-list>
+    <city-alphabet :cities="cities" @change="letterChange"></city-alphabet>
   </div>
 </template>
 
@@ -24,7 +24,8 @@ export default {
   data () {
     return {
       cities: {},
-      hotCities: []
+      hotCities: [],
+      letter: ''
     }
   },
   methods: {
@@ -35,11 +36,15 @@ export default {
     handleGetCityInfoSucc (res) {
       res = res.data
       if (res.ret && res.data) { // 逻辑与 && 第一个操作数的布尔值为true，则值为第二个操作数，第一个操作符的布尔值为false则值为第一个操作数
-        console.log(res)
+        // console.log(res)
         const data = res.data
         this.cities = data.cities
         this.hotCities = data.hotCities
       }
+    },
+    letterChange (letter) {
+      this.letter = letter
+      // console.log(letter)
     }
   },
   mounted () {
