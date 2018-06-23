@@ -5,14 +5,19 @@
         <div class="title border-topbottom">当前城市</div>
         <div class="button-list">
           <div class="button-wrapper">
-            <div class="button">北京</div>
+            <div class="button">{{this.curtcity}}</div>
           </div>
         </div>
       </div>
       <div class="area">
         <div class="title border-topbottom">热门城市</div>
         <div class="button-list">
-          <div class="button-wrapper" v-for="item of hot" :key="item.id">
+          <div
+          class="button-wrapper"
+          v-for="item of hot"
+          :key="item.id"
+          @click="cityClick(item.name)"
+          >
             <div class="button">{{item.name}}</div>
           </div>
         </div>
@@ -20,7 +25,14 @@
       <div class="area" :ref="key" v-for="(item, key) of cities" :key="key">
         <div class="title border-topbottom">{{key}}</div>
         <div class="item-list">
-          <div class="item border-bottom" v-for="innerItem of item" :key="innerItem.id">{{innerItem.name}}</div>
+          <div
+          class="item border-bottom"
+          v-for="innerItem of item"
+          :key="innerItem.id"
+          @click="cityClick(innerItem.name)"
+          >
+          {{innerItem.name}}
+          </div>
         </div>
       </div>
     </div>
@@ -29,12 +41,28 @@
 
 <script type="text/ecmascript-6">
 import BScroll from 'better-scroll'
+import { mapState, mapMutations } from 'vuex'
 export default {
   name: 'CityList',
   props: {
     hot: Array,
     cities: Object,
     letter: String
+  },
+  computed: {
+    ...mapState({
+      curtcity: 'city'
+    })
+  },
+  methods: {
+    cityClick (city) {
+      // this.$store.commit('clickCity', city)
+      // 页面跳转到首页
+      this.clickCity(city)
+      this.$router.push('/')
+    },
+    // 有一个 mutations 叫做 clickCity 把这个 mutations 映射到组件里面名字叫 clickCity方法里
+    ...mapMutations(['clickCity'])
   },
   mounted () {
     this.scroll = new BScroll(this.$refs.wrapper)

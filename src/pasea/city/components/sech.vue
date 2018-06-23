@@ -14,6 +14,7 @@
         v-for="item of list"
         :key="item.id"
         class="search-item border-bottom"
+        @click="cityClick(item.name)"
         >
         {{item.name}}
         </li>
@@ -25,6 +26,7 @@
 
 <script type="text/ecmascript-6">
 import Bscroll from 'better-scroll'
+import { mapMutations } from 'vuex'
 export default {
   name: 'CitySech',
   data () {
@@ -63,6 +65,16 @@ export default {
         this.list = result
       }, 100)
     }
+  },
+  methods: {
+    cityClick (city) {
+      // this.$store.commit('clickCity', city)
+      // 页面跳转到首页
+      this.clickCity(city)
+      this.$router.push('/')
+    },
+    // 有一个 mutations 叫做 clickCity 把这个 mutations 映射到组件里面名字叫 clickCity方法里
+    ...mapMutations(['clickCity'])
   },
   mounted () {
     this.scroll = new Bscroll(this.$refs.search)

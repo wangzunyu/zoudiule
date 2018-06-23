@@ -17,10 +17,12 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'HomeHeader',
-  props: {
-    city: String
+  // ... 三个点展开运输符
+  computed: {
+    ...mapState(['city'])
   }
 }
 </script>
@@ -48,10 +50,14 @@ export default {
       margin .12rem 0 0 .2rem
       color #cccccc
     .header-rit
-      width: 1.24rem
+      min-width: 1.04rem
+      padding 0 .1rem
       float: right
       text-align center //文本居中
       color #fff
+      overflow hidden
+      white-space nowrap
+      text-overflow ellipsis
       .arrow-icon
         margin-left -.02rem
         font-size .2rem
