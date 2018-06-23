@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     leterClick (e) {
-      this.$emit('change', e.target.innerText)
+      this.$emit('changet', e.target.innerText)
       // console.log(e.target.innerText)
     },
     handTouchStart () {
@@ -69,7 +69,7 @@ export default {
           // 判断手指滑动位置 大于等于0 或 位置小与数组里面的长度
           if (index >= 0 && index < this.letters.length) {
             // 使用 $emit 触发 change事间 后面是事间携带内容
-            this.$emit('change', this.letters[index])
+            this.$emit('changet', this.letters[index])
           }
         }, 16)
       }

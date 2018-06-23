@@ -3,7 +3,7 @@
     <city-header></city-header>
     <city-sech></city-sech>
     <city-list :letter="letter" :cities="cities" :hot="hotCities"></city-list>
-    <city-alphabet :cities="cities" @change="letterChange"></city-alphabet>
+    <city-alphabet :cities="cities" @changet="letterChange"></city-alphabet>
   </div>
 </template>
 
@@ -34,6 +34,7 @@ export default {
         .then(this.handleGetCityInfoSucc)
     },
     handleGetCityInfoSucc (res) {
+      // 定义这个方法接受模拟数据的值
       res = res.data
       if (res.ret && res.data) { // 逻辑与 && 第一个操作数的布尔值为true，则值为第二个操作数，第一个操作符的布尔值为false则值为第一个操作数
         // console.log(res)
@@ -44,7 +45,7 @@ export default {
     },
     letterChange (letter) {
       this.letter = letter
-      // console.log(letter)
+      console.log(letter)
     }
   },
   mounted () {
