@@ -34,7 +34,7 @@ export default {
     }
   },
   computed: {
-   ...mapState(['city']) 
+    ...mapState(['city'])
   },
   methods: {
     getHomeInfo () {
