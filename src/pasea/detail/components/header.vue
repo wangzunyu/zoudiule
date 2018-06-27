@@ -49,11 +49,14 @@ export default {
       } else {
         this.showAbs = true
       }
-      console.log(document.documentElement.scrollTop)
+      // console.log(document.documentElement.scrollTop)
     }
   },
   activated () {
     window.addEventListener('scroll', this.handleScroll)
+  },
+  deactivated () {
+    window.removeEventListener('scroll', this.handleScroll)
   }
 }
 </script>
@@ -74,6 +77,7 @@ export default {
       color #ffffff
       font-size .4rem
   .header-fiexd
+    z-index 2
     position fixed
     top 0
     left 0
