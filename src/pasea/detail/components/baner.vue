@@ -12,16 +12,19 @@
         </div>
       </div>
     </div>
-    <common-gallary
-    :imgs="gallaryImgs"
-    v-show="showGallary"
-    @close="handleGallaryClick"
-    ></common-gallary>
+    <fa-ce>
+      <common-gallary
+        :imgs="gallaryImgs"
+        v-show="showGallary"
+        @close="handleGallaryClick"
+      ></common-gallary>
+    </fa-ce>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
 import CommonGallary from 'common/gallary/gallary'
+import FaCe from 'common/face/face'
 export default {
   name: 'baner',
   props: {
@@ -30,7 +33,8 @@ export default {
     gallaryImgs: Array
   },
   components: {
-    CommonGallary
+    CommonGallary,
+    FaCe
   },
   data () {
     return {

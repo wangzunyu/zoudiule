@@ -8,7 +8,6 @@
     </detail-baner>
     <detail-header></detail-header>
     <detail-list :list="list"></detail-list>
-    <div class="cet"></div>
   </div>
 </template>
 
